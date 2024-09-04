@@ -612,7 +612,7 @@ where
     UseWebSocketReturn {
         ready_state: ready_state.into(),
         message: message.into(),
-        ws: ws_ref.get_value(),
+        ws: ws_ref,
         open,
         close,
         send,
@@ -717,7 +717,7 @@ where
     /// Latest message received from `WebSocket`.
     pub message: Signal<Option<Rx>>,
     /// The `WebSocket` instance.
-    pub ws: Option<WebSocket>,
+    pub ws: StoredValue<Option<WebSocket>>,
     /// Opens the `WebSocket` connection
     pub open: OpenFn,
     /// Closes the `WebSocket` connection
